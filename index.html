@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Screenshot Extractor</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Video Screenshot Extractor</h1>
+            <p>Extraia capturas de tela de vídeos de forma rápida e personalizada</p>
+        </header>
+
+        <main>
+            <section class="card">
+                <h2>Upload de Vídeo</h2>
+                <div class="control-group">
+                    <label for="videoInput">Selecione um vídeo:</label>
+                    <input type="file" id="videoInput" accept="video/*">
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Configurações de Extração</h2>
+                <div class="control-group">
+                    <label for="interval">Intervalo (segundos):</label>
+                    <input type="number" id="interval" min="0.1" max="60" step="0.1" value="1">
+                </div>
+                <div class="control-group">
+                    <label for="format">Formato:</label>
+                    <select id="format">
+                        <option value="jpeg">JPEG</option>
+                        <option value="png">PNG</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="quality">Qualidade (JPEG):</label>
+                    <input type="number" id="quality" min="1" max="100" value="80">
+                </div>
+                <div class="control-group">
+                    <label for="prefix">Prefixo dos arquivos:</label>
+                    <input type="text" id="prefix" value="screenshot">
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Pré-visualização do Vídeo</h2>
+                <video id="videoPlayer" controls></video>
+            </section>
+
+            <section class="card">
+                <h2>Ações</h2>
+                <div class="control-group">
+                    <button id="previewBtn">Pré-visualizar</button>
+                    <button id="extractBtn">Extrair Screenshots</button>
+                    <button id="cancelBtn" disabled>Cancelar</button>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+            </section>
+
+            <section class="card" id="screenshot-preview">
+                <h2>Pré-visualização das Capturas</h2>
+                <div class="preview-container"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Video Screenshot Extractor. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle"></h3>
+            <p id="modalMessage"></p>
+            <div class="modal-actions">
+                <button id="modalClose">Fechar</button>
+                <button id="modalConfirm" style="display: none;">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/jszip.min.js"></script>
+    <script src="lib/FileSaver.min.js"></script>
+    <script src="js/videoHandler.js"></script>
+    <script src="js/screenshotExtractor.js"></script>
+    <script src="js/uiController.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
